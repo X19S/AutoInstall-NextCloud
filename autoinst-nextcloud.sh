@@ -22,12 +22,12 @@ if [ "$opt1" = "1" ]; then
   #Install Updates
   apt-get update
   apt-get dist-upgrade
-
-  #Install PHP 7.4 with needed extensions
-  apt install php php-gd php-apache php-sqlite php-pgsql php-ldap php-intl php-apcu mariadb smbclient php-mycrypt ffmpeg libreoffice
-
+  
   #Install Apache2
   apt install apache2
+
+  #Install PHP 7.4 with needed extensions
+  apt install apache2 libapache2-mod-php mariadb-server php-xml php-cli php-cgi php-mysql php-mbstring php-gd php-curl php-zip
 
   clear
 
