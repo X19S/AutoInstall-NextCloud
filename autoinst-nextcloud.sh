@@ -20,14 +20,14 @@ if [ "$opt1" = "1" ]; then
   echo "Updating system and installing required extensions.."
 
   #Install Updates
-  apt-get update
-  apt-get dist-upgrade
+  apt-get update -y
+  apt-get dist-upgrade -y
   
   #Install Apache2
-  apt install apache2
+  apt install apache2 -y
 
   #Install PHP 7.4 with needed extensions
-  apt install apache2 libapache2-mod-php mariadb-server php-xml php-cli php-cgi php-mysql php-mbstring php-gd php-curl php-zip
+  apt install apache2 libapache2-mod-php mariadb-server php-xml php-cli php-cgi php-mysql php-mbstring php-gd php-curl php-zip -y
 
   clear
 
@@ -104,11 +104,11 @@ if [ "$opt1" = "3" ]; then
   echo "Installing required extensions.."
 
   #Install Updates
-  apt-get update
-  apt-get dist-upgrade
+  apt-get update -y
+  apt-get dist-upgrade -y
 
   #Install PHP 7.4 with needed extensions
-  apt install php php-gd php-apache php-sqlite php-pgsql php-ldap php-intl php-apcu mariadb smbclient php-mycrypt ffmpeg libreoffice
+  apt install apache2 libapache2-mod-php mariadb-server php-xml php-cli php-cgi php-mysql php-mbstring php-gd php-curl php-zip -y
 
   #Install Apache2
   apt install apache2
