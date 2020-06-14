@@ -31,8 +31,6 @@ if [ "$opt1" = "1" ]; then
 
   clear
 
-  sleep 1
-
   echo "Nextcloud is now installed!"
   echo "http://SERVER IP ADDRESS/"
 fi
