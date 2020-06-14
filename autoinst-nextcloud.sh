@@ -19,12 +19,12 @@ if [ "$opt1" = "1" ]; then
   echo "Updating system..."
 
   #Install Updates
-  apt-get update
-  apt-get dist-upgrade
+  apt update -y
+  apt dist-upgrade -y
 
   clear
 
-  echo "Installing NextCloud via Snap..."
+  echo "Installing NextCloud over Snap..."
 
   snap install nextcloud
   snap start nextcloud
