@@ -4,10 +4,9 @@ echo ""
 echo " +-+ +-+ +-+ +-+ +-+ +-+ +-+ +-+ +-+"
 echo " |N| |e| |x| |t| |C| |l| |o| |u| |d|"
 echo " +-+ +-+ +-+ +-+ +-+ +-+ +-+ +-+ +-+"
-echo " 1. Install Nextcloud + dependencies"
-echo " 2. Only NextCloud"
-echo " 3. Install dependencies"
-echo " 4. Get to our GitHub page"
+echo " 1. Install Nextcloud"
+echo " 2. Uninstall NextCloud"
+echo " 3. Get to our GitHub page"
 echo ""
 echo ""
 
@@ -17,106 +16,42 @@ echo ""
 
 if [ "$opt1" = "1" ]; then
 
-  echo "Updating system and installing required extensions.."
+  echo "Updating system..."
 
   #Install Updates
-  apt-get update -y
-  apt-get dist-upgrade -y
-  
-  #Install Apache2
-  apt install apache2 -y
-
-  #Install PHP 7.4 with needed extensions
-  apt install apache2 libapache2-mod-php mariadb-server php-xml php-cli php-cgi php-mysql php-mbstring php-gd php-curl php-zip -y
+  apt-get update
+  apt-get dist-upgrade
 
   clear
 
-  echo "Fetching latest release of NextCloud.."
+  echo "Installing NextCloud via Snap..."
 
-  #Create Folders
-  mkdir /var/www/html
-  mkdir /var/www/html/nextcloud
-  cd /var/www/html/
+  snap install nextcloud
+  snap start nextcloud
 
-  #Download latest release and unpack it
-  wget https://download.nextcloud.com/server/releases/latest.tar.bz2
-  tar xfvj latest.tar.bz2
-  rm latest.tar.bz2
-
-  clear
   clear
 
   sleep 1
 
-  echo "Restarting the web server.."
-
-  a2enmod rewrite
-  systemctl restart apache2
-
-    chown -R www-data:www-data /var/www/html/nextcloud/
-
-  systemctl reload apache2
-  systemctl restart apache2
-
-  clear
-
   echo "Nextcloud is now installed!"
+  echo "http://SERVER IP ADDRESS/"
 fi
 
 
 if [ "$opt1" = "2" ]; then
 
-  echo "Fetching latest release of NextCloud.."
+  echo "Uninstalling NextCloud..."
 
-  #Create Folders
-  mkdir /var/www/html
-  mkdir /var/www/html/nextcloud
-  cd /var/www/html/
-
-  #Download latest release and unpack it
-  wget https://download.nextcloud.com/server/releases/latest.tar.bz2
-  tar xfvj latest.tar.bz2
-  rm latest.tar.bz2
-
-  clear
-  clear
-
-  sleep 1
-
-  echo "Restarting the web server.."
-
-  a2enmod rewrite
-  systemctl restart apache2
-
-      chown -R www-data:www-data /var/www/html/nextcloud/
-
-  systemctl reload apache2
-  systemctl restart apache2
+  snap stop nextcloud
+  snap remove nextcloud
 
   clear
 
-  echo "Nextcloud is now installed!"
+  echo "Nextcloud is now uninstalled!"
 fi
 
 
 if [ "$opt1" = "3" ]; then
-
-  echo "Installing required extensions.."
-
-  #Install Updates
-  apt-get update -y
-  apt-get dist-upgrade -y
-
-  #Install PHP 7.4 with needed extensions
-  apt install apache2 libapache2-mod-php mariadb-server php-xml php-cli php-cgi php-mysql php-mbstring php-gd php-curl php-zip -y
-
-  #Install Apache2
-  apt install apache2
-
-fi
-
-
-if [ "$opt1" = "4" ]; then
   echo "Here is our GitHub page:"
   echo ""
   echo "https://github.com/X19S/AutoInstall-NextCloud"
